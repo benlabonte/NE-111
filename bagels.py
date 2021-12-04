@@ -46,7 +46,7 @@ def isOnlyDigits(num):
 
     return True
 
-# Print strings explaining rules of game -CH
+# Tells user the basic rules of the game -CH
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
 print('When I say:    That means:')
@@ -54,25 +54,26 @@ print('  Bagels       None of the digits is correct.')
 print('  Pico         One digit is correct but in the wrong position.')
 print('  Fermi        One digit is correct and in the right position.')
 
-while True:
-    secretNum = getSecretNum()
-    print('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESS))
+while True: # Infinite loop -CH
+    secretNum = getSecretNum() # Assigns the value of getSecretNum() function to 'secretNum' variable -CH
+    
+    print('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESS)) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
 
-    guessesTaken = 1
-    while guessesTaken <= MAX_GUESS:
-        guess = ''
-        while len(guess) != NUM_DIGITS or not isOnlyDigits(guess):
-            print('Guess #%s: ' % (guessesTaken))
-            guess = input()
+    guessesTaken = 1 # Assigns 1 to the variale 'guessesTaken'
+    while guessesTaken <= MAX_GUESS: # Runs the code below while the value of the variable 'guessesTaken' is less than or equal to MAX_GUESS (in this case 10) -CH
+        guess = '' # Assigns a blank string to the variable guess -CH
+        while len(guess) != NUM_DIGITS or not isOnlyDigits(guess): # Runs the code below while the users guess is not the correct amount of digits; or while the users guess is not a string of only digits -CH
+            print('Guess #%s: ' % (guessesTaken)) # Tells the user which guess they are making (e.g. 'Guess #1:' for their first guess) -CH
+            guess = input() # Queries the user to input their guess -CH
 
-        print(getClues(guess, secretNum))
-        guessesTaken += 1
+        print(getClues(guess, secretNum)) # Prints the clues or if the user guessed the number correctly -CH
+        guessesTaken += 1 # Upps the value of 'guessesTaken' by 1 -CH
 
-        if guess == secretNum:
-            break
-        if guessesTaken > MAX_GUESS:
-            print('You ran out of guesses. The answer was %s.' % (secretNum))
+        if guess == secretNum: # Runs code below if the user guessed the secret number correctly -CH
+            break #Stops the loop -CH
+        if guessesTaken > MAX_GUESS: # Runs the code below if the user used up all their guesses -CH
+            print('You ran out of guesses. The answer was %s.' % (secretNum)) # Tells the user they ran out of guesses & the correct secret number -CH
 
-    print('Do you want to play again? (yes or no)')
-    if not input().lower().startswith('y'):
-        break
+    print('Do you want to play again? (yes or no)') # Asks the user if they want to play again -CH
+    if not input().lower().startswith('y'): # Queries the user to input if they want to play again, makes the input lowercase, then checks if the input starts with 'y' -CH
+        break # if the input does not start with 'y', end the loop (exits the game) -CH

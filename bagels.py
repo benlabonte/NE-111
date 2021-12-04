@@ -28,7 +28,6 @@ def getClues(guess, secretNum):
 
     clues.sort()
     return ' '.join(clues)
-
 def isOnlyDigits(num):
     # Returns True if num is a string of only digits. Otherwise, returns False.
     if num == '':
@@ -44,7 +43,7 @@ def isOnlyDigits(num):
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
 print('When I say:    That means:')
-print('  Bagels       None of the digits is correct.')
+print('  None       None of the digits is correct.')
 print('  Pico         One digit is correct but in the wrong position.')
 print('  Fermi        One digit is correct and in the right position.')
 

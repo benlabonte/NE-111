@@ -1,16 +1,23 @@
 import random
 
-NUM_DIGITS = 3
-MAX_GUESS = 10
+NUM_DIGITS = 3 #Amount of digits for mystery number -CH
+MAX_GUESS = 10 #Amount of guesses -CH
 
 def getSecretNum():
     # Returns a string of unique random digits that is NUM_DIGITS long.
-    numbers = list(range(10))
-    random.shuffle(numbers)
-    secretNum = ''
-    for i in range(NUM_DIGITS):
-        secretNum += str(numbers[i])
-    return secretNum
+    
+    numbers = list(range(10)) # Assigns a list of range 10 to 'numbers' variable -CH
+    
+    random.shuffle(numbers) # Shuffles the list 'numbers' in place and returns None -CH
+    
+    secretNum = '' # Assigns a blank string to the 'secretNum' variable -CH
+    
+   
+    for i in range(NUM_DIGITS): # For every index in a range of NUM_DIGITS...
+        #Concatenates the first NUM_DIGITS(in this case three) index values from the shuffled 'numbers' converted into a string; -CH
+        #Concatenates it with the blank string 'secretNum' and reassigns the new string to 'secretNum' -CH
+        secretNum += str(numbers[i]) 
+    return secretNum # Returns variable 'secretNum' -CH
 
 def getClues(guess, secretNum):
     # Returns a string with the Pico, Fermi, & Bagels clues to the user.

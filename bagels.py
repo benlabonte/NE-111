@@ -46,7 +46,7 @@ def isOnlyDigits(num):
 
     return True
 
-
+# Print strings explaining rules of game -CH
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
 print('When I say:    That means:')

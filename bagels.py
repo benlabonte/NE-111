@@ -43,7 +43,7 @@ def isOnlyDigits(num):
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
 print('When I say:    That means:')
-print('  Unlucky      None of the digits is correct.')
+print('  Many Tries      None of the digits is correct.')
 print('  Pico         One digit is correct but in the wrong position.')
 print('  Fermi        One digit is correct and in the right position.')
 

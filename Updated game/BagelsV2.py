@@ -23,7 +23,7 @@ def getSecretNum():
 def getClues(guess, secretNum):
     # Returns a string with the Pico, Fermi, & Bagels clues to the user.
     if guess == secretNum: 
-        return 'You got it!' #When the player guesses the correctly ordered 3 digits, return 'You got it!' -BL
+        return 'METALLICA'*4 #When the player guesses the correctly ordered 3 digits, return 'You got it!' -BL
 
     clues = [] #Assigning clues to an empty list, prepping for the loop below. -BL
     for i in range(len(guess)): #Creates the loop designed to determine what to respond to guesses 1 through 10 inputed by the players. -BL
@@ -32,7 +32,7 @@ def getClues(guess, secretNum):
         elif guess[i] in secretNum: #If player guess is determined to be contained in the the secretNum but not the right index, as it has already failed the Fermi test
             clues.append('Pico')    #it will return 'Pico' corresponding to the number of digits determined to pass the Pico test. -BL
     if len(clues) == 0: #If no digits guessed match indices of secretNum or digits of secretNum, return 'Bagels'. -BL
-        return 'Bagels'
+        return 'Metallica:)'
 
     clues.sort() 
     return ' '.join(clues) #Return clues concatenated with a ' ' between each after the loop has finished running. -BL
@@ -51,9 +51,9 @@ def isOnlyDigits(num):
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
 print('When I say:    That means:')
-print('  Bagels       None of the digits is correct.')
-print('  Pico         One digit is correct but in the wrong position.')
-print('  Fermi        One digit is correct and in the right position.')
+print('  Metallica:)     None of the digits is correct.')
+print('  Pico            One digit is correct but in the wrong position.')
+print('  Fermi           One digit is correct and in the right position.')
 
 while True: # Infinite loop -CH
     secretNum = getSecretNum() # Assigns the value of getSecretNum() function to 'secretNum' variable -CH

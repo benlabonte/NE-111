@@ -1,7 +1,8 @@
 import random
 
-NUM_DIGITS = 3 #Amount of digits for mystery number -CH
-MAX_GUESS = 10 #Amount of guesses -CH
+#Make game longer -CH
+NUM_DIGITS = 4 #Change the amount of digits in the mystery number to 4 -CH
+MAX_GUESS = 20 #Double the amount of guesses due to increased difficulty -CH
 
 def getSecretNum():
     # Returns a string of unique random digits that is NUM_DIGITS long.

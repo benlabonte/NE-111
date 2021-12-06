@@ -1,4 +1,8 @@
 import random
+from termcolor import colored #importing necessary modules to customize our game messages. -BL
+from pyfiglet import Figlet
+cool_font=Figlet(font='standard') #Utilizing the pyfiglet module we imported -BL
+banner=Figlet(font='banner3-D')
 
 #Make game longer -CH
 NUM_DIGITS = 4 #Change the amount of digits in the mystery number to 4 -CH
@@ -23,7 +27,7 @@ def getSecretNum():
 def getClues(guess, secretNum):
     # Returns a string with the Pico, Fermi, & Bagels clues to the user.
     if guess == secretNum: 
-        return 'METALLICA'*4 #When the player guesses the correctly ordered 3 digits, return 'You got it!' -BL
+        return 'METALLICA'*4 #Changed the winning message to MELLICA 4 times - BL
 
     clues = [] #Assigning clues to an empty list, prepping for the loop below. -BL
     for i in range(len(guess)): #Creates the loop designed to determine what to respond to guesses 1 through 10 inputed by the players. -BL
@@ -48,17 +52,18 @@ def isOnlyDigits(num):
     return True
 
 # Tells user the basic rules of the game -CH
+print(colored(banner.renderText('Uh-Oh!'), 'red')) 
 print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
 print('The clues I give are...')
-print('When I say:    That means:')
-print('  Metallica:)     None of the digits is correct.')
+print('  When I say:     That means:')
+print('  Metallica:)     None of the digits is correct.') #Changed the message corresponding to no correct digits to 'Metallica'. -BL
 print('  Pico            One digit is correct but in the wrong position.')
 print('  Fermi           One digit is correct and in the right position.')
 
 while True: # Infinite loop -CH
     secretNum = getSecretNum() # Assigns the value of getSecretNum() function to 'secretNum' variable -CH
     
-    print('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESS)) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
+    print(colored(cool_font.renderText('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESS)), 'magenta')) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
 
     guessesTaken = 1 # Assigns 1 to the variale 'guessesTaken'
     while guessesTaken <= MAX_GUESS: # Runs the code below while the value of the variable 'guessesTaken' is less than or equal to MAX_GUESS (in this case 10) -CH
@@ -77,4 +82,9 @@ while True: # Infinite loop -CH
 
     print('Do you want to play again? (yes or no)') # Asks the user if they want to play again -CH
     if not input().lower().startswith('y'): # Queries the user to input if they want to play again, makes the input lowercase, then checks if the input starts with 'y' -CH
-        break # if the input does not start with 'y', end the loop (exits the game) -CH
+        print('Did you like the game?') 
+        if input().lower().startswith('y'):
+            print(colored(cool_font.renderText('Thanks! Please give us a good grade!:)'), 'red')) #Utilizing the imported modules to specialize messages! - BL
+            break #After the user has rated the game, the loop will break and the game will end. -BL
+        else:
+            break

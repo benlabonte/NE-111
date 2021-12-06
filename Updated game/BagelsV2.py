@@ -6,7 +6,7 @@ banner=Figlet(font='banner3-D')
 
 #Make game longer -CH
 NUM_DIGITS = 4 #Change the amount of digits in the mystery number to 4 -CH
-MAX_GUESS = 20 #Double the amount of guesses due to increased difficulty -CH
+MAX_GUESS = 15 #Double the amount of guesses due to increased difficulty -CH
 
 def getSecretNum():
     # Returns a string of unique random digits that is NUM_DIGITS long.
@@ -51,7 +51,7 @@ def isOnlyDigits(num):
 
     return True
 
-# Tells user the basic rules of the game -CH
+# Change theme of game plus fonts -CH
 print(colored(banner.renderText('Uh-Oh!'), 'red')) 
 print(colored("You are trapped in a room. The door is locked with a %s-digit code lock." % (NUM_DIGITS), 'green'))
 print(colored('However, every wrong guess gives you clues to what the code is. They are as follows...', 'green'))
@@ -63,13 +63,13 @@ print(colored('  Fermi                      One digit is correct and in the righ
 while True: # Infinite loop -CH
     secretNum = getSecretNum() # Assigns the value of getSecretNum() function to 'secretNum' variable -CH
     
-    print(colored(cool_font.renderText('You have %s guesses before the door locks permanently' % (MAX_GUESS)), 'magenta')) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
+    print(colored(cool_font.renderText('You have %s guesses before the door locks permanently' % (MAX_GUESS)), 'magenta')) # Banner feature makes intro to each game look more interesting + change message to match theme-CH
 
     guessesTaken = 1 # Assigns 1 to the variale 'guessesTaken'
     while guessesTaken <= MAX_GUESS: # Runs the code below while the value of the variable 'guessesTaken' is less than or equal to MAX_GUESS (in this case 10) -CH
         guess = '' # Assigns a blank string to the variable guess -CH
         while len(guess) != NUM_DIGITS or not isOnlyDigits(guess): # Runs the code below while the users guess is not the correct amount of digits; or while the users guess is not a string of only digits -CH
-            print('Guess #%s: ' % (guessesTaken)) # Tells the user which guess they are making (e.g. 'Guess #1:' for their first guess) -CH
+            print(colored('Guess #%s: ' % (guessesTaken), 'yellow')) # Tells the user which guess they are making (e.g. 'Guess #1:' for their first guess) -CH
             guess = input() # Queries the user to input their guess -CH
 
         print(getClues(guess, secretNum)) # Prints the clues or if the user guessed the number correctly -CH
@@ -78,7 +78,7 @@ while True: # Infinite loop -CH
         if guess == secretNum: # Runs code below if the user guessed the secret number correctly -CH
             break #Stops the loop -CH
         if guessesTaken > MAX_GUESS: # Runs the code below if the user used up all their guesses -CH
-            print(colored('You failed to escape... The answer was %s.' % (secretNum), 'red')) # Tells the user they ran out of guesses & the correct secret number -CH
+            print(colored('You failed to escape... The answer was %s.' % (secretNum), 'red')) #Change message to match theme + better color -CH
 
     print('Do you want to play again? (yes or no)') # Asks the user if they want to play again -CH
     if not input().lower().startswith('y'): # Queries the user to input if they want to play again, makes the input lowercase, then checks if the input starts with 'y' -CH

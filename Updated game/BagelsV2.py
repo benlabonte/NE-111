@@ -27,7 +27,7 @@ def getSecretNum():
 def getClues(guess, secretNum):
     # Returns a string with the Pico, Fermi, & Bagels clues to the user.
     if guess == secretNum: 
-        return 'METALLICA'*4 #Changed the winning message to MELLICA 4 times - BL
+        return 'You escaped!' #Changed the winning message to 'you escaped!' -BL
 
     clues = [] #Assigning clues to an empty list, prepping for the loop below. -BL
     for i in range(len(guess)): #Creates the loop designed to determine what to respond to guesses 1 through 10 inputed by the players. -BL
@@ -53,17 +53,17 @@ def isOnlyDigits(num):
 
 # Tells user the basic rules of the game -CH
 print(colored(banner.renderText('Uh-Oh!'), 'red')) 
-print('I am thinking of a %s-digit number. Try to guess what it is.' % (NUM_DIGITS))
-print('The clues I give are...')
-print('  When I say:     That means:')
-print('  Metallica:)     None of the digits is correct.') #Changed the message corresponding to no correct digits to 'Metallica'. -BL
-print('  Pico            One digit is correct but in the wrong position.')
-print('  Fermi           One digit is correct and in the right position.')
+print(colored("You are trapped in a room. The door is locked with a %s-digit code lock." % (NUM_DIGITS), 'green'))
+print(colored('However, every wrong guess gives you clues to what the code is. They are as follows...', 'green'))
+print(colored('  If this is the clue:     That means:', 'yellow'))
+print(colored('  Metallica:)                None of the digits are correct.', 'blue')) #Changed the message corresponding to no correct digits to 'Metallica'. -BL
+print(colored('  Pico                       One digit is correct but in the wrong position.', 'blue'))
+print(colored('  Fermi                      One digit is correct and in the right position.', 'blue'))
 
 while True: # Infinite loop -CH
     secretNum = getSecretNum() # Assigns the value of getSecretNum() function to 'secretNum' variable -CH
     
-    print(colored(cool_font.renderText('I have thought up a number. You have %s guesses to get it.' % (MAX_GUESS)), 'magenta')) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
+    print(colored(cool_font.renderText('You have %s guesses before the door locks permanently' % (MAX_GUESS)), 'magenta')) # Tells the user that they have MAX_GUESS guesses to guess the mystery number -CH
 
     guessesTaken = 1 # Assigns 1 to the variale 'guessesTaken'
     while guessesTaken <= MAX_GUESS: # Runs the code below while the value of the variable 'guessesTaken' is less than or equal to MAX_GUESS (in this case 10) -CH
@@ -78,7 +78,7 @@ while True: # Infinite loop -CH
         if guess == secretNum: # Runs code below if the user guessed the secret number correctly -CH
             break #Stops the loop -CH
         if guessesTaken > MAX_GUESS: # Runs the code below if the user used up all their guesses -CH
-            print('You ran out of guesses. The answer was %s.' % (secretNum)) # Tells the user they ran out of guesses & the correct secret number -CH
+            print(colored('You failed to escape... The answer was %s.' % (secretNum), 'red')) # Tells the user they ran out of guesses & the correct secret number -CH
 
     print('Do you want to play again? (yes or no)') # Asks the user if they want to play again -CH
     if not input().lower().startswith('y'): # Queries the user to input if they want to play again, makes the input lowercase, then checks if the input starts with 'y' -CH

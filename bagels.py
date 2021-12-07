@@ -1,4 +1,4 @@
-import random
+import random #Import random to random generate the numbers for secretNum. -CH
 
 NUM_DIGITS = 3 #Amount of digits for mystery number -CH
 MAX_GUESS = 10 #Amount of guesses -CH
